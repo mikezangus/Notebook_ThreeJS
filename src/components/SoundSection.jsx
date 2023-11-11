@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function SoundSection () {
+export default function SoundSection() {
     const handleLearnMore = () => {
         const element = document.querySelector('.display-section')
         window.scrollTo({

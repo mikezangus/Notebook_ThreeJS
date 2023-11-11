@@ -43,10 +43,10 @@ export default function Nav() {
                         <a className="link-styled">Support</a>
                     </li>
                     <li>
-                        <img src={Search} alt="Search"/>
+                        <img src={Search} alt="Search" />
                     </li>
                     <li>
-                        <img src={Store} alt="Store"/>
+                        <img src={Store} alt="Store" />
                     </li>
                 </ul>
             </div>

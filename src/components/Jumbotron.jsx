@@ -2,7 +2,7 @@ import React from "react";
 import Iphone from "../assets/images/iphone-14.jpg";
 import HoldingIphone from "../assets/images/iphone-hand.png";
 
-export default function Jumbotron () {
+export default function Jumbotron() {
     const handleLearnMore = () => {
         const element = document.querySelector(".sound-section");
         window.scrollTo({
@@ -27,7 +27,7 @@ export default function Jumbotron () {
                     <a className="link" onClick={handleLearnMore}>Learn more</a>
                 </li>
             </ul>
-            <img className="iphone-img" src={HoldingIphone} alt="Iphone"/>
+            <img className="iphone-img" src={HoldingIphone} alt="Iphone" />
         </div>
     );
 };
