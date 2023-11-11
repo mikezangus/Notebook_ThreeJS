@@ -3,6 +3,7 @@ import Jumbotron from "./components/Jumbotron";
 import SoundSection from "./components/SoundSection";
 import DisplaySection from "./components/DisplaySection";
 import WebgiViewer from "./components/WebgiViewer";
+import Loader from "./components/Loader";
 import { useRef } from "react";
 
 export default function App() {
@@ -13,6 +14,7 @@ export default function App() {
   }
   return (
     <div className="App">
+      <Loader />
       <div ref={contentRef} id="content">
         <Nav />
         <Jumbotron />
