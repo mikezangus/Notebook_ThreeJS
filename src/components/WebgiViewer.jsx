@@ -20,9 +20,29 @@ import {
 } from "webgi";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { scrollAnimation } from "../lib/scroll-animation";
 
-export default function WebgiViewer() {
+gsap.registerPlugin(ScrollTrigger);
+
+const WebgiViewer = forwardRef((props, ref) => {
     const canvasRef = useRef(null);
+    const [viewerRef, setViewerRef] = useState(null);
+    const [targetRef, setTargetRef] = useState(null);
+    const [cameraRef, setCameraRef] = useState(null);
+    const [positionRef, setPositionRef] = useState(null);
+    useImperativeHandle(ref, () => ({
+        triggerPreview() {
+            gsap.to(positionRef, )
+            
+        }
+    }));
+    const memoizedScrollAnimation = useCallback(
+        (position, target, onUpdate) => {
+            if (position && target && onUpdate) {
+                scrollAnimation(position, target, onUpdate);
+            }
+        }, []
+    )
     const setupViewer = useCallback(async () => {
         const viewer = new ViewerApp({
             canvas: canvasRef.current,
@@ -44,12 +64,17 @@ export default function WebgiViewer() {
         viewer.scene.activeCamera.setCameraOptions({ controlsEnabled: false });
         window.scrollTo(0, 0);
         let needsUpdate = true;
+        const onUpdate = () => {
+            needsUpdate = true;
+            viewer.setDirty();
+        }
         viewer.addEventListener("preFrame", () => {
             if(needsUpdate) {
                 camera.positionTargetUpdated(true);
                 needsUpdate = false;
             }
         });
+        memoizedScrollAnimation(position, target, onUpdate);
     }, []);
     useEffect(() => {
         setupViewer();
@@ -59,4 +84,6 @@ export default function WebgiViewer() {
             <canvas id="webgi-canvas" ref={canvasRef} />
         </div>
     );
-};
+});
+
+export default WebgiViewer

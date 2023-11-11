@@ -1,6 +1,9 @@
 import React from "react";
 
 export default function DisplaySection() {
+    const handleScrollToTop = () => {
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth"});
+    }
     return(
         <div className="display-section wrapper">
             <h2 className="title">New</h2>
@@ -9,7 +12,7 @@ export default function DisplaySection() {
                 A display that's up to 2x hotter than your mom
             </span>
             <button className="button">Try me</button>
-            <button className="back-button">TOP</button>
+            <button className="back-button" onClick={handleScrollToTop}>TOP</button>
         </div>
     );
 };
